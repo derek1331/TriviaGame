@@ -1,6 +1,18 @@
-var triviaQuestions = ["Who won the first World Series of Poker: Main Event?",
-  "What was the largest WSOP: Main Event 1st Place?",
-  "What was Tom Dwans online screen name?",
+
+var time = 30;
+var wrong = 0;
+var right = 0;
+var intervalid;
+
+
+
+
+
+
+
+var triviaQuestions = [,
+  
+  
   "Who goes by the nickname The Poker Brat?",
   "Who is credited with starting the Poker Boom?",
   "What year did Black Friday happen?",
@@ -9,8 +21,7 @@ var triviaQuestions = ["Who won the first World Series of Poker: Main Event?",
   'Who was not involved in "the Most Exclusive, High-Stakes Underground Poker Game in the World?"']
 
 var triviaAnswers = {
-  answers1: ["Johnny Leaf", "Johnny Moss", "Johnny Appleseed", "Johnny Bananas"],
-  answers2: ["9 Ladies Dancing", "$8,000,00", "about tree fiddy", "$12,000,000"],
+
   answers3: ["mytommyhurts", "durrrr", "dwanoftheman", "dwanofthewoman"],
   answers4: ["Phil Ivey", "Phil Hellmuth", "Phil Bratswoski", "Philip J Fry"],
   answers5: ["George W Bush", "Chris Moneymaker", "Adam Dolladollabillsya", "Anthony Wiener"],
@@ -20,22 +31,137 @@ var triviaAnswers = {
   answers9: ["Ben Affleck", "Macaulay Culkin", "Michael Cera", "Leonardo DiCaprio"]
 };
 
-function Question1 () {
-  $('#questions').html();
+function remover() {
+  $("#answer1").empty();
+  $("#answer2").empty();
+  $("#answer3").empty();
+  $("#answer4").empty();
+  wrong++;
 
 }
 
+function remover2() {
+  $("#answer1").empty();
+  $("#answer2").empty();
+  $("#answer3").empty();
+  $("#answer4").empty();
+  right++;
+}
 
-var number = 5;
-var wrong = 0;
-var right = 0;
-var intervalid;
-var timer;
+function Question1() {
+
+  run();
+  $('#questions').html('Who won the first World Series of Poker: Main Event?');
+
+  $('#answer1').html('Johnny Leaf').click(function () {
+    loser();
+    setTimeout(Question2, 5000);
+  });
+  $('#answer2').html('Johhny Moss').click(function () {
+    winner();
+    setTimeout(Question2, 5000);
+  });
+  $('#answer3').html('Johnny Appleseed').click(function () {
+    loser();
+    setTimeout(Question2, 5000);
+  });
+  $('#answer4').html('Johnny Bananas').click(function () {
+    loser();
+    setTimeout(Question2, 5000);
+  });
+}
+
+function Question2() {
+
+
+  run()
+
+  $('#questions').html('What was the largest WSOP: Main Event 1st Place?');
+
+  $('#answer1').html('9 Ladies Dancing').click(function () {
+    loser();
+    setTimeout(Question3, 5000);
+  });
+
+  $('#answer2').html('$9,000,000').click(function () {
+    loser();
+    setTimeout(Question3, 5000);
+  });
+
+  $('#answer3').html('about tree fiddy').click(function () {
+    loser();
+    setTimeout(Question3, 5000);
+  });
+
+  $('#answer4').html('$12,000,000').click(function () {
+    winner();
+    setTimeout(Question3, 5000);
+  });
+
+}
+function Question3() {
+
+
+  run()
+
+  $('#questions').html('What was Tom Dwans online screen name?');
+
+  $('#answer1').html('mytommyhurts').click(function () {
+    loser();
+    setTimeout(Question4, 5000);
+  });
+
+  $('#answer2').html('durrr').click(function () {
+    winner();
+    setTimeout(Question4, 5000);
+  });
+
+  $('#answer3').html('dwanoftheman').click(function () {
+    loser();
+    setTimeout(Question4, 5000);
+  });
+
+  $('#answer4').html('dwanofthewoman').click(function () {
+    loser();
+    setTimeout(Question4, 5000);
+  });
+}
+function Question4() {
+
+
+  run()
+
+  $('#questions').html('What was Tom Dwans online screen name?');
+
+  $('#answer1').html('mytommyhurts').click(function () {
+    loser();
+    setTimeout(Question2, 5000);
+  });
+
+  $('#answer2').html('durrr').click(function () {
+    winner();
+    setTimeout(Question2, 5000);
+  });
+
+  $('#answer3').html('dwanoftheman').click(function () {
+    loser();
+    setTimeout(Question2, 5000);
+  });
+
+  $('#answer4').html('dwanofthewoman').click(function () {
+    loser();
+    setTimeout(Question2, 5000);
+  });
+}
+
 
 function start() {
   $('#start').hide();
+  $('#timer').show();
 
-  run();
+  Question1();
+
+
 }
 
 function restart() {
@@ -44,31 +170,51 @@ function restart() {
 }
 
 function run() {
-  clearInterval(timer);
-  timer = setInterval(decrement, 1000);
+  clearInterval(intervalid);
+  intervalid = setInterval(decrement, 1000);
 }
 
 function loser() {
-  $('#answers').html('<img src="assets/images/cards.gif">');
+  stop();
+  remover();
+
+  $('#answer1').html('Correct: ' + right);
+  $('#answer2').html('Incorrect: ' + wrong);
+  $('#answer3').html('<img src="assets/images/win.gif">');
+
 }
 
+
 function winner() {
-  $('#answers').html('<img src="assets/images/cards.gif">');
+  stop();
+  remover2();
+
+  $('#answer1').html('Correct: ' + right);
+  $('#answer2').html('Incorrect: ' + wrong);
+  $('#answer3').html('<img src="assets/images/win.gif">');
+
+
 }
 
 function decrement() {
-  $('#timer').html("Time Remaining: " + number);
-  number--;
-    if (number === -1) {
-      stop()
-    }
+  $('#timer').html('Time Remaining: ' + time);
+  time--;
+  if (time === -1) {
+    stop()
+  }
 }
+
+
+
+
 
 function stop() {
-  clearInterval(timer);
+  clearInterval(intervalid);
 }
 
-
+$(window).on('load', function () {
+  $('#timer').hide();
+})
 
 
 

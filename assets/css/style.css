@@ -2,13 +2,44 @@ body {
     background-color: peru;
 }
 
-.jumbotron {
+#main {
     background-color: limegreen;
+    width: 50%;
+    height: 800px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 30px;
+   
 }
 
 h1 {
     color: red;
+    padding: 30px 0 0 0;
+    font-size: 3em;
+    font-weight: 900;
 }
 
+#start { 
+    width: 40%;
 
+}
 
+#answers {
+    font-size: 2em;
+}
+#questions {
+    font-size: 2em;
+    text-decoration:underline;
+}
+#timer {
+    font-size: 2em;
+}
+
+.link:hover {
+    
+    
+    color:red;
+    text-shadow: 1px 1px 1px rgb(11, 156, 209);
+    
+    
+}
