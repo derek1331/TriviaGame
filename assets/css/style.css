@@ -6,15 +6,12 @@ body {
 #main {
     background-color: limegreen;
     width: 50%;
-    height: 700px;
+    height: 650px;
     margin: 0 auto;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 55px;
     margin-bottom: 30px;
     border: groove peru;
-    
-    
-   
 }
 
 h1 {
@@ -25,16 +22,19 @@ h1 {
 }
 
 #start { 
-    width: 40%;
-    background-color: white;
-    border: 1px red;
-
-
+    width: 275px;
+    height: 350px;
+    font-size: 3em;
+    font-weight: 900;
+    color:blueviolet;
+    background: white;
+    
 }
 
 #answers {
     font-size: 1.5em;
 }
+
 #questions {
     font-size: 1.8em;
     color: white;
@@ -45,10 +45,16 @@ h1 {
 }
 
 .link:hover {
-    
-    
     color:white;
     text-shadow: 1px 1px 1px rgb(11, 156, 209);
-    
-    
+}
+
+#score {
+    font-size: 1.8em;
+    color: white;
+}
+
+#correct {
+    font-size: 1.8em;
+    color:red;
 }
